@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portfolio — Gertino Bemahefa</title>
+  <meta name="description" content="Portfolio de Gertino Bemahefa — Monteur vidéo & vidéaste freelance." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg: #0b0b0e;
+      --bg-2: #0f0f14;
+      --panel: rgba(22,22,28,0.7);
+      --ink: #F5F6F8;
+      --muted: #A9AABB;
+      --line: #24242c;
+      --chip: rgba(255,255,255,0.06);
+      --brand-1: #E23013;
+      --brand-2: #0E96A8;
+      --brand-3: #EF6D25;
+      --ring: #ffffff10;
+      --blur: saturate(110%) blur(8px);
+      --radius: 18px;
+      --shadow: 0 10px 28px rgba(0,0,0,.35), inset 0 1px 0 #ffffff08;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family:"Plus Jakarta Sans", system-ui, -apple-system, Segoe UI, Roboto, Arial, "Helvetica Neue", sans-serif;
+      color:var(--ink); background:
+        radial-gradient(1200px 600px at 110% -10%, #1b1b24 0%, transparent 60%),
+        radial-gradient(900px 500px at -10% 110%, #17171f 0%, transparent 60%),
+        linear-gradient(180deg, var(--bg), #09090c 60%);
+    }
+    .wrap{max-width:1200px; margin:56px auto; padding:0 22px}
+
+    /* HERO */
+    .hero{
+      position:relative; overflow:hidden; border-radius:calc(var(--radius) + 6px);
+      padding:42px; display:grid; grid-template-columns:1fr 1fr; gap:28px; isolation:isolate;
+    }
+    .hero::before{
+      content:""; position:absolute; inset:-1px; border-radius:inherit; padding:1px;
+      background: conic-gradient(from 180deg at 50% 50%, var(--brand-1), var(--brand-2), var(--brand-3), var(--brand-1));
+      -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor; mask-composite: exclude; z-index:-1;
+    }
+    .hero::after{
+      content:""; position:absolute; inset:0; border-radius:inherit; backdrop-filter:var(--blur);
+      background: linear-gradient(180deg, #14141b99, #0e0e1399); z-index:-1; box-shadow: var(--shadow);
+    }
+    .badge{display:inline-flex; align-items:center; gap:10px; padding:8px 12px; border-radius:999px; border:1px solid var(--ring); background:#0f0f14aa;
+      font-size:12px; letter-spacing:.4px; text-transform:uppercase; color:var(--muted)}
+    .name{margin:10px 0 0; font-size:clamp(32px, 5vw, 58px); letter-spacing:.4px; font-weight:800}
+    .role{margin-top:6px; color:var(--muted); font-weight:600}
+    .tagline{margin-top:16px; color:#ffffffcc; line-height:1.7}
+
+    .hero-right{display:grid; grid-template-columns:120px 1fr; gap:18px; align-items:start}
+    .avatar-wrap{position:relative; width:120px; height:120px}
+    .avatar-ring{position:absolute; inset:-2px; border-radius:50%;
+      background: conic-gradient(var(--brand-2), var(--brand-3), var(--brand-1), var(--brand-2));
+      filter: drop-shadow(0 12px 28px rgba(0,0,0,.4));
+    }
+    .avatar{
+      position:absolute; inset:6px; border-radius:50%; overflow:hidden; background:#111218;
+      border:1px solid var(--line);
+    }
+    .avatar img{width:100%; height:100%; object-fit:cover; display:block}
+    .contact{display:grid; gap:12px; align-content:start}
+    .k{display:flex; align-items:center; gap:12px; color:var(--muted)}
+    .k svg{width:18px; height:18px; opacity:.9}
+
+    /* GRID */
+    main{display:grid; grid-template-columns: 0.85fr 1.15fr; gap:26px; margin-top:28px}
+    .panel{position:relative; background:var(--panel); border:1px solid var(--line); border-radius:var(--radius); padding:22px 22px 18px; box-shadow:var(--shadow); overflow:hidden}
+    .panel::before{content:""; position:absolute; inset:0; pointer-events:none; background:
+      radial-gradient(500px 220px at -10% -10%, #ffffff08, transparent 60%),
+      linear-gradient(180deg, #ffffff03, transparent 40%)}
+    .h{display:flex; align-items:center; justify-content:space-between; margin-bottom:14px}
+    .h h2{margin:0; font-size:14px; letter-spacing:.24em; text-transform:uppercase; color:var(--muted)}
+    .hr{height:1px; background:linear-gradient(90deg, transparent, var(--line), transparent); margin:12px -22px 0}
+
+    .profile p{margin:0; color:#ffffffcc; line-height:1.8}
+
+    .skills{display:grid; gap:14px; margin-top:10px}
+    .row{display:flex; flex-wrap:wrap; gap:10px; align-items:center}
+    .row b{min-width:160px; color:var(--muted); font-weight:700; letter-spacing:.3px}
+    .chips{display:flex; flex-wrap:wrap; gap:10px}
+    .chip{position:relative; background:var(--chip); border:1px solid var(--line); padding:9px 12px; border-radius:12px; font-size:13px; backdrop-filter: blur(2px)}
+    .chip::after{content:""; position:absolute; inset:-1px; border-radius:inherit; background:linear-gradient(90deg, #ffffff00, #ffffff09, #ffffff00)}
+
+    .timeline{display:flex; flex-direction:column; gap:18px; margin-top:6px}
+    .xp{position:relative; padding-left:22px}
+    .xp::before{content:""; position:absolute; left:7px; top:6px; width:10px; height:10px; border-radius:50%; background:linear-gradient(135deg, var(--brand-2), var(--brand-3)); box-shadow:0 0 0 4px #0e0e14, 0 0 18px var(--brand-2)}
+    .xp h3{margin:0 0 6px; font-size:18px}
+    .xp .meta{color:var(--muted); font-size:13px; margin-bottom:6px}
+    .xp ul{margin:0; padding-left:18px}
+    .xp li{margin:6px 0; opacity:.98}
+
+    .list{display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:14px}
+    .item{border:1px solid var(--line); border-radius:14px; padding:14px 14px; background:linear-gradient(180deg,#16161d,#13131a); position:relative; overflow:hidden; transform:translateZ(0)}
+    .item::after{content:""; position:absolute; inset:0; background:radial-gradient(400px 120px at 110% -10%, #ffffff08, transparent 60%)}
+    .item:hover{box-shadow:0 8px 28px rgba(0,0,0,.45); transform:translateY(-2px)}
+
+    .conf p{margin:8px 0; color:#ffffffcc}
+    .btn{
+      --g: linear-gradient(90deg, var(--brand-1), var(--brand-2), var(--brand-3));
+      display:inline-flex; align-items:center; gap:10px; padding:10px 14px; border-radius:12px; border:1px solid var(--line); background:#15151c; text-decoration:none; color:#fff; font-weight:700;
+    }
+    .btn:hover{background:#171721}
+    .btn .dot{width:8px; height:8px; border-radius:999px; background:var(--brand-2); box-shadow:0 0 12px var(--brand-2)}
+
+    footer{margin:28px 0 64px; display:flex; justify-content:center; opacity:.6; font-size:13px}
+
+    @media (max-width: 980px){
+      .hero{grid-template-columns:1fr; padding:28px}
+      .hero-right{grid-template-columns:100px 1fr}
+      main{grid-template-columns:1fr; gap:20px}
+      .list{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero" aria-label="En-tête">
+      <div>
+        <span class="badge">Disponible • Freelance</span>
+        <h1 class="name">Gertino Bemahefa</h1>
+        <div class="role">Monteur Vidéo & Vidéaste</div>
+        <p class="tagline">
+          Passionné par la narration visuelle et le design, avec plus de 5 ans d’expérience en montage et création
+          de contenus digitaux. Je livre des vidéos percutantes, engageantes et adaptées à chaque besoin : marketing,
+          institutionnel, YouTube, TikTok et storytelling visuel.
+        </p>
+      </div>
+      <div class="hero-right">
+        <div class="avatar-wrap" title="pdp.png">
+          <div class="avatar-ring"></div>
+          <div class="avatar"><img src="assets/pdp.png" alt="Photo de profil — à remplacer" /></div>
+        </div>
+        <div class="contact">
+          <div class="k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92V21a2 2 0 0 1-2.18 2A19.8 19.8 0 0 1 3 5.18 2 2 0 0 1 5 3h4.09a2 2 0 0 1 2 1.72c.12.9.32 1.78.6 2.63a2 2 0 0 1-.45 2.11L10 10a16 16 0 0 0 6 6l.54-1.24a2 2 0 0 1 2.11-.45c.85.28 1.73.48 2.63.6A2 2 0 0 1 22 16.92z"/></svg>
+            <span>038 95 743 57</span></div>
+          <div class="k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v16H4z"/><path d="M22 6l-10 7L2 6"/></svg>
+            <span><a href="mailto:gertinobemahefa@gmail.com" style="color:inherit; text-decoration:none; border-bottom:1px dotted #ffffff33">gertinobemahefa@gmail.com</a></span></div>
+          <div class="k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 12-9 12S3 17 3 10a9 9 0 1 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>III H 4 Ouest, Ambohijanahary — Madagascar</span></div>
+        </div>
+      </div>
+    </section>
+
+    <main>
+      <section class="panel profile" aria-labelledby="h-profil">
+        <div class="h"><h2 id="h-profil">Profil</h2></div>
+        <p>
+          Je combine créativité, rigueur et maîtrise des outils professionnels pour livrer des vidéos au rythme précis,
+          une bonne colorimétrie et une narration claire. Optimisation des montages pour les algorithmes sociaux
+          (durée, transitions, accroches) et gestion de bout en bout : <em>script → montage → habillage → export final</em>.
+        </p>
+        <div class="hr"></div>
+
+        <div class="h" style="margin-top:16px"><h2>Compétences</h2></div>
+        <div class="skills">
+          <div class="row">
+            <b>Montage vidéo</b>
+            <div class="chips">
+              <span class="chip">Adobe Premiere Pro</span>
+              <span class="chip">After Effects</span>
+              <span class="chip">DaVinci Resolve</span>
+              <span class="chip">CapCut</span>
+            </div>
+          </div>
+          <div class="row">
+            <b>Effets / Motion</b>
+            <div class="chips">
+              <span class="chip">After Effects</span>
+              <span class="chip">Premiere Pro</span>
+            </div>
+          </div>
+          <div class="row">
+            <b>Graphisme</b>
+            <div class="chips">
+              <span class="chip">Photoshop</span>
+              <span class="chip">Illustrator</span>
+              <span class="chip">Canva</span>
+            </div>
+          </div>
+          <div class="row">
+            <b>Savoir‑faire</b>
+            <div class="chips">
+              <span class="chip">Colorimétrie</span>
+              <span class="chip">Storytelling</span>
+              <span class="chip">Sous‑titres</span>
+              <span class="chip">Sync audio/vidéo</span>
+              <span class="chip">Formats web & RS</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel" aria-labelledby="h-exp">
+        <div class="h"><h2 id="h-exp">Expériences</h2></div>
+        <div class="timeline">
+          <article class="xp">
+            <h3>Monteur vidéo — Freelance <span style="opacity:.7">(ComeUp & clients privés)</span></h3>
+            <div class="meta">2019 – Aujourd’hui</div>
+            <ul>
+              <li>75+ projets pour clients internationaux (marketing, YouTube, TikTok, corporate, storytelling).</li>
+              <li>Optimisation algorithmes sociaux : durée, rythme, transitions, rétention.</li>
+              <li>Gestion complète du flux : script → montage → habillage → export final.</li>
+            </ul>
+          </article>
+          <article class="xp">
+            <h3>Monteur vidéo — Nuklear <span style="opacity:.7">(stage / actuellement)</span></h3>
+            <div class="meta">Aujourd’hui</div>
+            <ul>
+              <li>Contenus institutionnels et marketing alignés à l’identité visuelle.</li>
+              <li>Coordination avec l’équipe communication pour cohérence de marque.</li>
+              <li>Utilisation de Pictory pour générer des vidéos à partir de scripts textuels.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <section class="panel" aria-labelledby="h-real">
+      <div class="h"><h2 id="h-real">Réalisations — Exemples</h2></div>
+      <div class="list">
+        <div class="item">Vidéos marketing (ComeUp) — spots courts orientés conversion et branding.</div>
+        <div class="item">Clips dynamiques pour réseaux sociaux : TikTok, Reels, Shorts.</div>
+        <div class="item">Corporate & institutionnels (Nuklear) — interviews, présentations, annonces.</div>
+        <div class="item">Génération vidéo par IA (Pictory) — capsules pédagogiques, communication interne.</div>
+      </div>
+    </section>
+
+    <section class="panel conf" aria-labelledby="h-conf">
+      <div class="h"><h2 id="h-conf">Confidentialité & Accès aux travaux</h2></div>
+      <p>Ci‑joint mes <strong>main d’œuvre</strong>, dont <strong>j’assure la confidentialité</strong>.</p>
+      <p>La majorité de mes main d’œuvre ont été réalisées sur des plateformes de freelance telles que <strong>ComeUp</strong> et <strong>Upwork</strong>, où la divulgation des données entre client et prestataire est interdite. D’autres projets sont <strong>médiatisés</strong>.</p>
+      <p>Les vidéos suivantes sont celles pour lesquelles <strong>je n’ai signé aucun contrat</strong>.</p>
+      <p><a class="btn" href="https://docs.google.com/spreadsheets/d/1myIT-q8GHGpbB1blhvprvoMC0AY-UtmF6i4GPv6dhcM/edit?usp=sharing" id="work-link" title="Voir mon Google Sheet"><span class="dot"></span> Voir mon Google Sheet</a></p>
+    </section>
+
+    <footer>
+      <div>© <span id="y"></span> Gertino Bemahefa — Portfolio</div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
