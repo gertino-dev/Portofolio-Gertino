@@ -10,20 +10,20 @@
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg: #0b0b0e;
-      --bg-2: #0f0f14;
-      --panel: rgba(22,22,28,0.7);
+      --bg: #0a0a0d;
+      --bg-2: #0e0e14;
+      --panel: rgba(18,18,24,.72);
       --ink: #F5F6F8;
       --muted: #A9AABB;
-      --line: #24242c;
+      --line: #23232b;
       --chip: rgba(255,255,255,0.06);
-      --brand-1: #E23013;
-      --brand-2: #0E96A8;
-      --brand-3: #EF6D25;
+      --brand-1: #E23013; /* Nuklear Red */
+      --brand-2: #0E96A8; /* Nuklear Blue */
+      --brand-3: #EF6D25; /* Nuklear Orange */
       --ring: #ffffff10;
-      --blur: saturate(110%) blur(8px);
       --radius: 18px;
       --shadow: 0 10px 28px rgba(0,0,0,.35), inset 0 1px 0 #ffffff08;
+      --blur: saturate(110%) blur(10px);
     }
     *{box-sizing:border-box}
     html,body{height:100%}
@@ -36,48 +36,33 @@
     }
     .wrap{max-width:1200px; margin:56px auto; padding:0 22px}
 
-    /* HERO */
-    .hero{
-      position:relative; overflow:hidden; border-radius:calc(var(--radius) + 6px);
-      padding:42px; display:grid; grid-template-columns:1fr 1fr; gap:28px; isolation:isolate;
-    }
-    .hero::before{
-      content:""; position:absolute; inset:-1px; border-radius:inherit; padding:1px;
-      background: conic-gradient(from 180deg at 50% 50%, var(--brand-1), var(--brand-2), var(--brand-3), var(--brand-1));
-      -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-      -webkit-mask-composite: xor; mask-composite: exclude; z-index:-1;
-    }
-    .hero::after{
-      content:""; position:absolute; inset:0; border-radius:inherit; backdrop-filter:var(--blur);
-      background: linear-gradient(180deg, #14141b99, #0e0e1399); z-index:-1; box-shadow: var(--shadow);
-    }
-    .badge{display:inline-flex; align-items:center; gap:10px; padding:8px 12px; border-radius:999px; border:1px solid var(--ring); background:#0f0f14aa;
-      font-size:12px; letter-spacing:.4px; text-transform:uppercase; color:var(--muted)}
+    /* === HERO === */
+    .hero{position:relative; overflow:hidden; border-radius:calc(var(--radius) + 6px); padding:42px; display:grid; grid-template-columns:1.05fr .95fr; gap:28px; isolation:isolate}
+    .hero::before{content:""; position:absolute; inset:-1px; border-radius:inherit; padding:1px; background: conic-gradient(from 180deg at 50% 50%, var(--brand-1), var(--brand-2), var(--brand-3), var(--brand-1)); -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite:xor; mask-composite:exclude; z-index:-1}
+    .hero::after{content:""; position:absolute; inset:0; border-radius:inherit; backdrop-filter:var(--blur); background: linear-gradient(180deg, #14141b99, #0e0e1399); z-index:-1; box-shadow: var(--shadow)}
+    .badge{display:inline-flex; align-items:center; gap:10px; padding:8px 12px; border-radius:999px; border:1px solid var(--ring); background:#0f0f14aa; font-size:12px; letter-spacing:.4px; text-transform:uppercase; color:var(--muted)}
     .name{margin:10px 0 0; font-size:clamp(32px, 5vw, 58px); letter-spacing:.4px; font-weight:800}
     .role{margin-top:6px; color:var(--muted); font-weight:600}
     .tagline{margin-top:16px; color:#ffffffcc; line-height:1.7}
 
     .hero-right{display:grid; grid-template-columns:120px 1fr; gap:18px; align-items:start}
     .avatar-wrap{position:relative; width:120px; height:120px}
-    .avatar-ring{position:absolute; inset:-2px; border-radius:50%;
-      background: conic-gradient(var(--brand-2), var(--brand-3), var(--brand-1), var(--brand-2));
-      filter: drop-shadow(0 12px 28px rgba(0,0,0,.4));
-    }
-    .avatar{
-      position:absolute; inset:6px; border-radius:50%; overflow:hidden; background:#111218;
-      border:1px solid var(--line);
-    }
+    .avatar-ring{position:absolute; inset:-2px; border-radius:50%; background: conic-gradient(var(--brand-2), var(--brand-3), var(--brand-1), var(--brand-2)); filter: drop-shadow(0 12px 28px rgba(0,0,0,.4))}
+    .avatar{position:absolute; inset:6px; border-radius:50%; overflow:hidden; background:#111218; border:1px solid var(--line)}
     .avatar img{width:100%; height:100%; object-fit:cover; display:block}
     .contact{display:grid; gap:12px; align-content:start}
     .k{display:flex; align-items:center; gap:12px; color:var(--muted)}
     .k svg{width:18px; height:18px; opacity:.9}
 
-    /* GRID */
+    /* === TOOLBELT (Logos logiciels) === */
+    .toolbelt{display:flex; flex-wrap:wrap; gap:14px; margin-top:22px}
+    .app{display:flex; align-items:center; gap:10px; padding:8px 12px; border:1px solid var(--line); border-radius:14px; background:linear-gradient(180deg,#16161d,#13131a)}
+    .app img{width:22px; height:22px; object-fit:contain; border-radius:6px; display:block}
+
+    /* === MAIN GRID === */
     main{display:grid; grid-template-columns: 0.85fr 1.15fr; gap:26px; margin-top:28px}
     .panel{position:relative; background:var(--panel); border:1px solid var(--line); border-radius:var(--radius); padding:22px 22px 18px; box-shadow:var(--shadow); overflow:hidden}
-    .panel::before{content:""; position:absolute; inset:0; pointer-events:none; background:
-      radial-gradient(500px 220px at -10% -10%, #ffffff08, transparent 60%),
-      linear-gradient(180deg, #ffffff03, transparent 40%)}
+    .panel::before{content:""; position:absolute; inset:0; pointer-events:none; background: radial-gradient(500px 220px at -10% -10%, #ffffff08, transparent 60%), linear-gradient(180deg, #ffffff03, transparent 40%)}
     .h{display:flex; align-items:center; justify-content:space-between; margin-bottom:14px}
     .h h2{margin:0; font-size:14px; letter-spacing:.24em; text-transform:uppercase; color:var(--muted)}
     .hr{height:1px; background:linear-gradient(90deg, transparent, var(--line), transparent); margin:12px -22px 0}
@@ -99,21 +84,39 @@
     .xp ul{margin:0; padding-left:18px}
     .xp li{margin:6px 0; opacity:.98}
 
+    /* === GRID Réalisations (galerie) === */
     .list{display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:14px}
-    .item{border:1px solid var(--line); border-radius:14px; padding:14px 14px; background:linear-gradient(180deg,#16161d,#13131a); position:relative; overflow:hidden; transform:translateZ(0)}
+    .item{border:1px solid var(--line); border-radius:14px; padding:16px; background:linear-gradient(180deg,#16161d,#13131a); position:relative; overflow:hidden; transform:translateZ(0)}
     .item::after{content:""; position:absolute; inset:0; background:radial-gradient(400px 120px at 110% -10%, #ffffff08, transparent 60%)}
     .item:hover{box-shadow:0 8px 28px rgba(0,0,0,.45); transform:translateY(-2px)}
 
-    .conf p{margin:8px 0; color:#ffffffcc}
-    .btn{
-      --g: linear-gradient(90deg, var(--brand-1), var(--brand-2), var(--brand-3));
-      display:inline-flex; align-items:center; gap:10px; padding:10px 14px; border-radius:12px; border:1px solid var(--line); background:#15151c; text-decoration:none; color:#fff; font-weight:700;
+    /* Nouveau layout: logo + texte avec plus d'espace */
+    .entry{display:grid; grid-template-columns:64px 1fr; gap:14px; align-items:center; min-height:92px}
+    .logo-slot{width:64px; height:64px; border:1px dashed #2a2a34; border-radius:12px; background:#0f0f15; display:grid; place-items:center; overflow:hidden}
+    .logo-slot img{max-width:100%; max-height:100%; object-fit:contain; opacity:.95}
+    .entry-text{font-style:italic; line-height:1.75; color:#e9eaf0; letter-spacing:.2px}
+    .entry-text b{font-style:normal}
+
+    @media (max-width: 600px){
+      .entry{grid-template-columns:56px 1fr}
+      .logo-slot{width:56px; height:56px}
     }
+
+    /* === Bande logos clients === */
+    .brands{display:grid; grid-template-columns:repeat(5, minmax(0,1fr)); gap:12px; margin-top:12px}
+    .brand{
+      height:56px; border:1px dashed #2a2a34; border-radius:14px; background:#111119; display:grid; place-items:center; color:#7d7e90; font-size:12px; letter-spacing:.08em; text-transform:uppercase
+    }
+    .brand img{max-height:36px; max-width:120px; opacity:.92; filter:contrast(110%)}
+
+    /* === CTA === */
+    .btn{--g: linear-gradient(90deg, var(--brand-1), var(--brand-2), var(--brand-3)); display:inline-flex; align-items:center; gap:10px; padding:10px 14px; border-radius:12px; border:1px solid var(--line); background:#15151c; text-decoration:none; color:#fff; font-weight:700}
     .btn:hover{background:#171721}
     .btn .dot{width:8px; height:8px; border-radius:999px; background:var(--brand-2); box-shadow:0 0 12px var(--brand-2)}
 
     footer{margin:28px 0 64px; display:flex; justify-content:center; opacity:.6; font-size:13px}
 
+    @media (max-width: 1100px){.brands{grid-template-columns:repeat(3,minmax(0,1fr))}}
     @media (max-width: 980px){
       .hero{grid-template-columns:1fr; padding:28px}
       .hero-right{grid-template-columns:100px 1fr}
@@ -130,11 +133,23 @@
         <h1 class="name">Gertino Bemahefa</h1>
         <div class="role">Monteur Vidéo & Vidéaste</div>
         <p class="tagline">
-          Passionné par la narration visuelle et le design, avec plus de 5 ans d’expérience en montage et création
-          de contenus digitaux. Je livre des vidéos percutantes, engageantes et adaptées à chaque besoin : marketing,
-          institutionnel, YouTube, TikTok et storytelling visuel.
+          Passionné par la narration visuelle et le design, avec 5+ ans d’expérience en montage
+          et création de contenus digitaux. Je livre des vidéos percutantes, engageantes et adaptées à chaque besoin :
+          marketing, institutionnel, YouTube, TikTok et storytelling visuel.
         </p>
+
+        <!-- Ceinture d'outils : logos logiciels (placeholders stylisés) -->
+        <div class="toolbelt" aria-label="Logiciels maîtrisés">
+          <!-- Remplace juste les chemins ci-dessous par tes images -->
+          <span class="app"><img src="assets/logos/premiere.png" alt="Premiere Pro"/>Premiere Pro</span>
+          <span class="app"><img src="assets/logos/after-effects.png" alt="After Effects"/>After Effects</span>
+          <span class="app"><img src="assets/logos/davinci-resolve.png" alt="DaVinci Resolve"/>DaVinci Resolve</span>
+          <span class="app"><img src="assets/logos/photoshop.png" alt="Photoshop"/>Photoshop</span>
+          <span class="app"><img src="assets/logos/illustrator.png" alt="Illustrator"/>Illustrator</span>
+          <span class="app"><img src="assets/logos/canva.png" alt="Canva"/>Canva</span>
+        </div>
       </div>
+
       <div class="hero-right">
         <div class="avatar-wrap" title="pdp.png">
           <div class="avatar-ring"></div>
@@ -156,8 +171,8 @@
         <div class="h"><h2 id="h-profil">Profil</h2></div>
         <p>
           Je combine créativité, rigueur et maîtrise des outils professionnels pour livrer des vidéos au rythme précis,
-          une bonne colorimétrie et une narration claire. Optimisation des montages pour les algorithmes sociaux
-          (durée, transitions, accroches) et gestion de bout en bout : <em>script → montage → habillage → export final</em>.
+          une colorimétrie propre et une narration claire. Optimisation des montages pour les algorithmes sociaux
+          (durée, transitions, accroches) et gestion de bout en bout : <em>script → montage → habillage → export</em>.
         </p>
         <div class="hr"></div>
 
@@ -207,39 +222,68 @@
             <h3>Monteur vidéo — Freelance <span style="opacity:.7">(ComeUp & clients privés)</span></h3>
             <div class="meta">2019 – Aujourd’hui</div>
             <ul>
-              <li>75+ projets pour clients internationaux (marketing, YouTube, TikTok, corporate, storytelling).</li>
+              <li>75+ projets (marketing, YouTube, TikTok, corporate, storytelling).</li>
               <li>Optimisation algorithmes sociaux : durée, rythme, transitions, rétention.</li>
-              <li>Gestion complète du flux : script → montage → habillage → export final.</li>
+              <li>Flux complet : script → montage → habillage → export.</li>
             </ul>
           </article>
           <article class="xp">
-            <h3>Monteur vidéo — Nuklear <span style="opacity:.7">(stage / actuellement)</span></h3>
+            <h3>Monteur vidéo — Nuklear <span style="opacity:.7">(stage / actuel)</span></h3>
             <div class="meta">Aujourd’hui</div>
             <ul>
               <li>Contenus institutionnels et marketing alignés à l’identité visuelle.</li>
               <li>Coordination avec l’équipe communication pour cohérence de marque.</li>
-              <li>Utilisation de Pictory pour générer des vidéos à partir de scripts textuels.</li>
+              <li>Utilisation de Pictory pour générer des vidéos depuis des scripts textes.</li>
             </ul>
           </article>
         </div>
       </section>
     </main>
 
+    <!-- === Réalisations avec vignettes style player === -->
     <section class="panel" aria-labelledby="h-real">
       <div class="h"><h2 id="h-real">Réalisations — Exemples</h2></div>
       <div class="list">
-        <div class="item">Vidéos marketing (ComeUp) — spots courts orientés conversion et branding.</div>
-        <div class="item">Clips dynamiques pour réseaux sociaux : TikTok, Reels, Shorts.</div>
-        <div class="item">Corporate & institutionnels (Nuklear) — interviews, présentations, annonces.</div>
-        <div class="item">Génération vidéo par IA (Pictory) — capsules pédagogiques, communication interne.</div>
+        <div class="item">
+          <div class="entry">
+            <div class="logo-slot"><img src="assets/upwork.png" alt="ComeUp" onerror="this.parentElement.textContent='Logo'"/></div>
+            <div class="entry-text"><b>Vidéos marketing</b> — spots courts orientés conversion & branding, optimisés pour la rétention et l’appel à l’action.</div>
+          </div>
+        </div>
+        <div class="item">
+          <div class="entry">
+            <div class="logo-slot"><img src="assets/tiktok.png" alt="TikTok" onerror="this.parentElement.textContent='Logo'"/></div>
+            <div class="entry-text">Clips <b>dynamiques</b> pour réseaux sociaux : TikTok, Reels, Shorts — formats punchy, sous‑titres stylés, hooks efficaces.</div>
+          </div>
+        </div>
+        <div class="item">
+          <div class="entry">
+            <div class="logo-slot"><img src="assets/nuklear.png" alt="Nuklear" onerror="this.parentElement.textContent='Logo'"/></div>
+            <div class="entry-text"><b>Corporate & institutionnels</b> — interviews, présentations et annonces avec habillage sobre et colorimétrie cohérente.</div>
+          </div>
+        </div>
+        <div class="item">
+          <div class="entry">
+            <div class="logo-slot"><img src="assets/pictory.png" alt="Pictory" onerror="this.parentElement.textContent='Logo'"/></div>
+            <div class="entry-text">Génération vidéo par <b>IA</b> (Pictory) — capsules pédagogiques & communication interne à partir de scripts.</div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section class="panel conf" aria-labelledby="h-conf">
-      <div class="h"><h2 id="h-conf">Confidentialité & Accès aux travaux</h2></div>
-      <p>Ci‑joint mes <strong>main d’œuvre</strong>, dont <strong>j’assure la confidentialité</strong>.</p>
-      <p>La majorité de mes main d’œuvre ont été réalisées sur des plateformes de freelance telles que <strong>ComeUp</strong> et <strong>Upwork</strong>, où la divulgation des données entre client et prestataire est interdite. D’autres projets sont <strong>médiatisés</strong>.</p>
-      <p>Les vidéos suivantes sont celles pour lesquelles <strong>je n’ai signé aucun contrat</strong>.</p>
+    <!-- === Logos clients à insérer === -->
+    <section class="panel" aria-labelledby="h-brands">
+      <div class="h"><h2 id="h-brands">Ils m’ont fait confiance</h2></div>
+      <div class="brands">
+        <!-- Remplacez les placeholders par vos logos entreprise (PNG/SVG) -->
+        <div class="brand"><img src="brands/brand-1.png" alt="Logo client 1" onerror="this.parentElement.textContent='Logo 1'"/></div>
+        <div class="brand"><img src="brands/brand-2.png" alt="Logo client 2" onerror="this.parentElement.textContent='Logo 2'"/></div>
+        <div class="brand"><img src="brands/brand-3.png" alt="Logo client 3" onerror="this.parentElement.textContent='Logo 3'"/></div>
+        <div class="brand"><img src="brands/brand-4.png" alt="Logo client 4" onerror="this.parentElement.textContent='Logo 4'"/></div>
+        <div class="brand"><img src="brands/brand-5.png" alt="Logo client 5" onerror="this.parentElement.textContent='Logo 5'"/></div>
+      </div>
+      <div class="hr"></div>
+      <p style="margin-top:14px">Ci‑joint mes <strong>main d’œuvre</strong>, dont <strong>j’assure la confidentialité</strong>. La majorité ont été réalisées sur <strong>ComeUp</strong> & <strong>Upwork</strong> où la divulgation est interdite. Les vidéos ci‑dessous sont sans contrat signé.</p>
       <p><a class="btn" href="https://docs.google.com/spreadsheets/d/1myIT-q8GHGpbB1blhvprvoMC0AY-UtmF6i4GPv6dhcM/edit?usp=sharing" id="work-link" title="Voir mon Google Sheet"><span class="dot"></span> Voir mon Google Sheet</a></p>
     </section>
 
